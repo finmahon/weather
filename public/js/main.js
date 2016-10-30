@@ -8,7 +8,7 @@ function getWeather() {
         "numReadings":"20"
     };
 
-    $.post('http://localhost:8001/eidw', body, function(data){
+    $.post('http://nodeappfm-fintanm.rhcloud.com/eidw', body, function(data){
     	console.log('res', data);
     	// $('#eidw').text(JSON.stringify(data.res));
         // $('<table><tr><td>.....</td></tr></table>').appendTo( '#eidw' );
