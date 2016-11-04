@@ -26,6 +26,7 @@ app.use(mbaasExpress.fhmiddleware());
 
 // fhlint-begin: custom-routes
 app.use('/eidw', require('./lib/eidw.js')());
+app.use('/dublinBuoy', require('./lib/dublinBuoy.js')());
 // fhlint-end
 
 // Important that this is last!
