@@ -67,15 +67,25 @@ function getdlData() {
         var data = data.res;
         var header = "<tr><th>Time</th><th>Temp</th><th>Wind</th><th>Dirn</th></tr>"
         var rows = '';
-        for (var i = 0; i < data.length; i++) {
-            rows=rows.concat('<tr>'+
-                '<td>'+data[i].time+'</td>'+
-                '<td>'+data[i].temp+'</td>'+
-                '<td>'+data[i].wind+'</td>'+
-                '<td>'+data[i].dirn+'</td>'+
-                '</tr>')
-        };
-        $("#dldata").append("<table class='table'>"+header+rows+"</table>")
+
+        rows=rows.concat('<tr>'+
+            '<td>'+data[0].substr(18,100)+'</td>'+
+            '<td>' + data[6].substr(17,100).replace(/\s/g, '')   +'</td>'+
+            '<td>'+parseFloat(data[2].split(":")[1].split('kts')[0])
+                +'G' + parseFloat(data[3].split(":")[1].split('kts')[0])
+                +'</td>'+
+            '<td>'+ data[1].split(":")[1].substr(1,200).replace(/\s/g, '') + '</td>'+
+            '</tr>')
+
+        $("#dldata").append("<table class='table'>"+header+rows+"</table>");
+
+        $("#dldata").append("<p>"+data[15].replace(/\s\s/g, '')+ '<br>' +
+            data[16].replace(/\s\s/g, '')+ '<br>' +
+            data[17].replace(/\s\s/g, '')+ '<br>' +
+            data[18].replace(/\s\s/g, '')+ '<br>' +
+            "</p>");
+
+
         $("#dlspinner").hide();
     })
 }
