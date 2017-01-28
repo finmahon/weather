@@ -7,8 +7,12 @@ var urlBuoy = window.location.hostname === 'localhost' ?
     'http://nodeappfm-fintanm.rhcloud.com/dublinBuoy';
 
 var urlDlData = window.location.hostname === 'localhost' ?
-    'http://localhost:8001/dlData' :
-    'http://nodeappfm-fintanm.rhcloud.com/dlData';
+    'http://localhost:8001/dlData/current' :
+    'http://nodeappfm-fintanm.rhcloud.com/dlData/current';
+
+var urlDlWindData = window.location.hostname === 'localhost' ?
+    'http://localhost:8001/dlData/wind' :
+    'http://nodeappfm-fintanm.rhcloud.com/dlData/wind';
 
 function getWeather() {
     var body = {
@@ -90,11 +94,33 @@ function getdlData() {
     })
 }
 
+function getdlWindData() {
+    $.get(urlDlWindData, function(data){
+
+        var data = data.res;
+        var header = "<tr><th>Time</th><th>Temp</th><th>Wind</th><th>Dirn</th></tr>"
+        var rows = '';
+
+        for (var i = 0; i < data.length; i++) {
+            rows=rows.concat('<tr>'+
+                '<td>'+data[i].time+'</td>'+
+                '<td>'+data[i].temp+'</td>'+
+                '<td>'+data[i].wind+'</td>'+
+                '<td>'+data[i].dirn+'</td>'+
+                '</tr>');
+        }
+        $("#dlwinddata").append("<table class='table'>"+header+rows+"</table>")
+        $("#dlwindspinner").hide();
+    })
+}
+
+
 
 
 $( document ).ready(function() {
     getWeather();
     getBuoy();
     getdlData();
+    getdlWindData();
 });
 
