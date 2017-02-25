@@ -52,9 +52,9 @@ function getBuoy() {
         for (var i = 0; i < data.length; i++) {
             rows=rows.concat('<tr>'+
                 '<td>'+data[i].Time+'</td>'+
-                '<td>'+ (data[i].Wind+' G'+ data[i].Gust+' '+ data[i].Dirn).replace(/\s+/g, '').replace(/kts+/g, ' ') + '</td>'+
-                '<td>'+data[i].Height+'</td>'+
-                '<td>'+data[i].Period+'</td>'+
+                '<td>'+ ( data[i].Wind ?   (data[i].Wind+' G'+ data[i].Gust+' '+ data[i].Dirn).replace(/\s+/g, '').replace(/kts+/g, ' ') : '-') + '</td>'+
+                '<td>'+( data[i].Height ?  data[i].Height : '-')+'</td>'+
+                '<td>'+(data[i].Period ? data[i].Period : '-')+'</td>'+
                 '<td>'+data[i].WaterTemp.replace(/\s+/g, '')+'</td>'+
                 '</tr>')
         };
