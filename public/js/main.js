@@ -47,7 +47,7 @@ function getBuoy() {
         // $('#eidw').text(JSON.stringify(data.res));
         // $('<table><tr><td>.....</td></tr></table>').appendTo( '#eidw' );
         var data = data.res;
-        var header = "<tr><th>time</th><th>wind (knts)</th><th>Height</th><th>Period</th><th>Water Temp</th></tr>"
+        var header = "<tr><th>time</th><th>wind (knts)</th><th>Height</th><th>Water Temp</th></tr>"
         var rows = '';
         for (var i = 0; i < data.length; i++) {
             rows=rows.concat('<tr>'+
