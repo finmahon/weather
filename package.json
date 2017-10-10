@@ -53,11 +53,11 @@
   },
   "bundleDependencies": [],
   "private": true,
-  "main": "application.js",
+  "main": "server.js",
   "scripts": {
     "test": "grunt test",
     "debug": "grunt serve",
-    "start": "node application.js"
+    "start": "node server.js"
   },
   "license": "mit"
 }
