@@ -7,7 +7,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     watch: {
       js: {
-        files: ['gruntfile.js', 'application.js', 'lib/**/*.js', 'test/**/*.js'],
+        files: ['gruntfile.js', 'server.js', 'lib/**/*.js', 'test/**/*.js'],
         options: {
           livereload: true
         }
@@ -21,7 +21,7 @@ module.exports = function(grunt) {
     },
     nodemon: {
       dev: {
-        script: 'application.js',
+        script: 'server.js',
         options: {
           args: [],
           ignore: ['public/**'],
@@ -70,7 +70,7 @@ module.exports = function(grunt) {
         options: {
           stdout: true
         },
-        command: 'env NODE_PATH=. node --debug-brk application.js'
+        command: 'env NODE_PATH=. node --debug-brk server.js'
       },
       unit: {
         options: {
