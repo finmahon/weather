@@ -1,18 +1,29 @@
-var urlWeather = window.location.hostname === 'localhost' ?
-    'http://localhost:8001/eidw' :
-    'http://nodeappfm-fintanm.rhcloud.com/eidw';
+// var urlWeather = window.location.hostname === 'localhost' ?
+//     'http://localhost:8001/eidw' :
+//     'http://nodeappfm-fintanm.rhcloud.com/eidw';
 
-var urlBuoy = window.location.hostname === 'localhost' ?
-    'http://localhost:8001/dublinBuoy' :
-    'http://nodeappfm-fintanm.rhcloud.com/dublinBuoy';
+// var urlBuoy = window.location.hostname === 'localhost' ?
+//     'http://localhost:8001/dublinBuoy' :
+//     'http://nodeappfm-fintanm.rhcloud.com/dublinBuoy';
 
-var urlDlData = window.location.hostname === 'localhost' ?
-    'http://localhost:8001/dlData/current' :
-    'http://nodeappfm-fintanm.rhcloud.com/dlData/current';
+// var urlDlData = window.location.hostname === 'localhost' ?
+//     'http://localhost:8001/dlData/current' :
+//     'http://nodeappfm-fintanm.rhcloud.com/dlData/current';
 
-var urlDlWindData = window.location.hostname === 'localhost' ?
-    'http://localhost:8001/dlData/wind' :
-    'http://nodeappfm-fintanm.rhcloud.com/dlData/wind';
+// var urlDlWindData = window.location.hostname === 'localhost' ?
+//     'http://localhost:8001/dlData/wind' :
+//     'http://nodeappfm-fintanm.rhcloud.com/dlData/wind';
+
+
+
+var urlWeather = location.href + 'eidw' ;
+
+var urlBuoy = location.href + 'dublinBuoy' ;
+
+var urlDlData = location.href + 'dlData/current' ;
+
+var urlDlWindData = location.href + 'dlData/wind' ;
+
 
 function getWeather() {
     var body = {
