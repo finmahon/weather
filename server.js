@@ -2,6 +2,7 @@
 var express = require('express'),
     app     = express(),
     morgan  = require('morgan');
+    var cors = require('cors');
     
 Object.assign=require('object-assign')
 
@@ -88,6 +89,20 @@ app.get('/pagecount', function (req, res) {
     res.send('{ pageCount: -1 }');
   }
 });
+
+
+
+// Enable CORS for all requests
+app.use(cors());
+
+// allow serving of static files from the public directory
+app.use(express.static(__dirname + '/public'));
+
+// fhlint-begin: custom-routes
+app.use('/eidw', require('./lib/eidw.js')());
+app.use('/dublinBuoy', require('./lib/dublinBuoy.js')());
+app.use('/dlData', require('./lib/dlharbour.js')());
+// fhlint-end
 
 // error handling
 app.use(function(err, req, res, next){
