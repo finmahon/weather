@@ -26,7 +26,7 @@
     "body-parser": "~1.18.2",
     "cors": "~2.8.4",
     "express": "~4.16.1",
-    "fh-mbaas-api": "8.0.2",
+    "fh-mbaas-api": "~8.0.3",
     "jsdom": "^11.3.0",
     "lodash": "^4.16.4",
     "metar": "^1.0.0",
