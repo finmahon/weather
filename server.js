@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-
+console.log('hi dere');
 // fhlint-begin: custom-routes
 app.use('/eidw', require('./lib/eidw.js')());
 app.use('/dublinBuoy', require('./lib/dublinBuoy.js')());
@@ -38,6 +38,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
+  console.log('env : ', req.app.get('env'))
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
