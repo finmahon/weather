@@ -1,0 +1,89 @@
+apiVersion: v1
+kind: List
+items:
+  - apiVersion: v1
+    kind: DeploymentConfig
+    metadata:
+      name: dublin-weather-app
+      namespace: dublin-weather
+      labels:
+        project: dublin-weather-app
+        version: 1.0.0
+        provider: nodeshift
+        app: dublin-weather-app
+      annotations:
+        nodeshift/git-branch: master
+        nodeshift/git-commit: bade2d13ff768f7eb6375ad77692d25ec6f1f902
+    spec:
+      replicas: 1
+      revisionHistoryLimit: 2
+      selector:
+        app: dublin-weather-app
+        project: dublin-weather-app
+        provider: nodeshift
+      triggers:
+        - type: ConfigChange
+        - type: ImageChange
+          imageChangeParams:
+            automatic: true
+            containerNames:
+              - dublin-weather-app
+            from:
+              kind: ImageStreamTag
+              name: 'dublin-weather-app:latest'
+      template:
+        metadata:
+          labels:
+            project: dublin-weather-app
+            version: 1.0.0
+            provider: nodeshift
+            app: dublin-weather-app
+          annotations:
+            nodeshift/git-branch: master
+            nodeshift/git-commit: bade2d13ff768f7eb6375ad77692d25ec6f1f902
+        spec:
+          containers:
+            - image: dublin-weather-app
+              name: dublin-weather-app
+              securityContext:
+                privileged: false
+              ports:
+                - containerPort: 8080
+                  name: http
+                  protocol: TCP
+  - apiVersion: v1
+    kind: Service
+    spec:
+      selector:
+        project: dublin-weather-app
+        provider: nodeshift
+      ports:
+        - protocol: TCP
+          port: 8080
+          targetPort: 8080
+          name: http
+      type: ClusterIP
+    metadata:
+      name: dublin-weather-app
+      namespace: dublin-weather
+      labels:
+        project: dublin-weather-app
+        version: 1.0.0
+        provider: nodeshift
+      annotations:
+        nodeshift/git-branch: master
+        nodeshift/git-commit: bade2d13ff768f7eb6375ad77692d25ec6f1f902
+  - apiVersion: v1
+    kind: Route
+    spec:
+      to:
+        kind: Service
+        name: dublin-weather-app
+      port:
+        targetPort: 8080
+    metadata:
+      name: dublin-weather-app
+      labels:
+        project: dublin-weather-app
+        version: 1.0.0
+        provider: nodeshift
