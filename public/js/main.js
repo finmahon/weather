@@ -1,18 +1,18 @@
 var urlWeather = window.location.hostname === 'localhost' ?
     'http://localhost:8001/eidw' :
-    'http://wind-dublin-weather.1d35.starter-us-east-1.openshiftapps.com//eidw';
+    'http://wind-dublin-weather.1d35.starter-us-east-1.openshiftapps.com/eidw';
 
 var urlBuoy = window.location.hostname === 'localhost' ?
     'http://localhost:8001/dublinBuoy' :
-    'http://wind-dublin-weather.1d35.starter-us-east-1.openshiftapps.com//dublinBuoy';
+    'http://wind-dublin-weather.1d35.starter-us-east-1.openshiftapps.com/dublinBuoy';
 
 var urlDlData = window.location.hostname === 'localhost' ?
     'http://localhost:8001/dlData/current' :
-    'http://wind-dublin-weather.1d35.starter-us-east-1.openshiftapps.com//dlData/current';
+    'http://wind-dublin-weather.1d35.starter-us-east-1.openshiftapps.com/dlData/current';
 
 var urlDlWindData = window.location.hostname === 'localhost' ?
     'http://localhost:8001/dlData/wind' :
-    'http://wind-dublin-weather.1d35.starter-us-east-1.openshiftapps.com//dlData/wind';
+    'http://wind-dublin-weather.1d35.starter-us-east-1.openshiftapps.com/dlData/wind';
 
 function getWeather() {
     var body = {
